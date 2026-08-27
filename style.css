@@ -1,0 +1,1326 @@
+/* =========================================
+   TASKFLOW - MODERN TODO APP
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================
+   RESET
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: 'Inter', sans-serif;
+
+    min-height: 100vh;
+
+    color: #1e293b;
+
+    background:
+        radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.20), transparent 25%),
+        radial-gradient(circle at 90% 10%, rgba(6, 182, 212, 0.18), transparent 25%),
+        radial-gradient(circle at 80% 90%, rgba(236, 72, 153, 0.15), transparent 30%),
+        #f5f7ff;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   BACKGROUND DECORATIONS
+   ========================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    background: rgba(124, 58, 237, 0.12);
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    top: -100px;
+    left: -100px;
+
+    z-index: -1;
+}
+
+
+body::after {
+    content: "";
+
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    background: rgba(6, 182, 212, 0.12);
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    bottom: -100px;
+    right: -100px;
+
+    z-index: -1;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.container {
+    width: 92%;
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 35px 0 25px;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+header {
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 30px 35px;
+
+    margin-bottom: 25px;
+
+    border-radius: 24px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed,
+            #9333ea
+        );
+
+    box-shadow:
+        0 20px 45px rgba(79, 70, 229, 0.25);
+}
+
+
+header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    right: -70px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.12);
+}
+
+
+header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    left: 35%;
+
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.logo > span {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    color: #5b21b6;
+
+    font-size: 32px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+.logo h1 {
+    font-size: 32px;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 5px;
+}
+
+
+.logo p {
+    font-size: 14px;
+
+    opacity: 0.85;
+}
+
+
+.task-summary {
+    position: relative;
+
+    z-index: 2;
+
+    min-width: 110px;
+
+    padding: 15px 20px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.task-summary strong {
+    display: block;
+
+    font-size: 30px;
+
+    font-weight: 800;
+}
+
+
+.task-summary span {
+    font-size: 12px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================
+   ADD TASK CARD
+   ========================================= */
+
+.add-task-card {
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    backdrop-filter: blur(20px);
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 15px 40px rgba(15, 23, 42, 0.07);
+}
+
+
+.add-task-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 30px;
+    right: 30px;
+
+    height: 3px;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        90deg,
+        #6366f1,
+        #8b5cf6,
+        #ec4899
+    );
+}
+
+
+.add-task-card h2 {
+    font-size: 21px;
+
+    font-weight: 700;
+
+    margin-bottom: 22px;
+
+    color: #111827;
+}
+
+
+/* =========================================
+   INPUT AREA
+   ========================================= */
+
+.input-group {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr;
+
+    gap: 16px;
+}
+
+
+.input-box {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.input-box label {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #64748b;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+}
+
+
+input {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    border: 1.5px solid #e2e8f0;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    color: #1e293b;
+
+    background: #f8fafc;
+
+    transition: all 0.3s ease;
+}
+
+
+input:hover {
+    border-color: #c4b5fd;
+
+    background: white;
+}
+
+
+input:focus {
+    border-color: #7c3aed;
+
+    background: white;
+
+    box-shadow:
+        0 0 0 4px rgba(124, 58, 237, 0.10);
+
+    transform: translateY(-1px);
+}
+
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+
+/* =========================================
+   ADD BUTTON
+   ========================================= */
+
+.add-btn {
+    margin-top: 20px;
+
+    padding: 14px 25px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(79, 70, 229, 0.25);
+
+    transition: all 0.3s ease;
+}
+
+
+.add-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 13px 25px rgba(79, 70, 229, 0.35);
+}
+
+
+.add-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   FILTER SECTION
+   ========================================= */
+
+.filter-section {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    width: fit-content;
+
+    padding: 6px;
+
+    margin-bottom: 22px;
+
+    border-radius: 14px;
+
+    background: white;
+
+    border: 1px solid #eef2f7;
+
+    box-shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06);
+}
+
+
+.filter {
+    padding: 10px 18px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #64748b;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+
+.filter:hover {
+    color: #4f46e5;
+
+    background: #f5f3ff;
+}
+
+
+.filter.active {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 5px 12px rgba(79, 70, 229, 0.2);
+}
+
+
+/* =========================================
+   TASK SECTION
+   ========================================= */
+
+.tasks-section {
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.93);
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 15px 40px rgba(15, 23, 42, 0.07);
+}
+
+
+.section-heading {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+
+.section-heading h2 {
+    font-size: 22px;
+
+    font-weight: 750;
+
+    color: #111827;
+
+    margin-bottom: 5px;
+}
+
+
+.section-heading p {
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+
+#pendingCount {
+    padding: 8px 14px;
+
+    border-radius: 30px;
+
+    color: #b45309;
+
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   TASK CARD
+   ========================================= */
+
+.task-card {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px 20px;
+
+    margin-bottom: 12px;
+
+    border-radius: 15px;
+
+    border: 1px solid #edf0f5;
+
+    background: white;
+
+    box-shadow:
+        0 4px 12px rgba(15, 23, 42, 0.03);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border 0.25s ease;
+}
+
+
+.task-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 15px;
+    bottom: 15px;
+
+    width: 3px;
+
+    border-radius: 5px;
+
+    background: #6366f1;
+
+    opacity: 0;
+
+    transition: 0.25s;
+}
+
+
+.task-card:hover {
+    transform: translateX(4px);
+
+    border-color: #ddd6fe;
+
+    box-shadow:
+        0 10px 25px rgba(79, 70, 229, 0.08);
+}
+
+
+.task-card:hover::before {
+    opacity: 1;
+}
+
+
+/* =========================================
+   CHECK BUTTON
+   ========================================= */
+
+.check-btn {
+    width: 27px;
+    height: 27px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 2px solid #a78bfa;
+
+    background: white;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+
+.check-btn:hover {
+    transform: scale(1.12);
+
+    border-color: #7c3aed;
+
+    background: #f5f3ff;
+}
+
+
+.task-card.completed .check-btn {
+    border-color: #7c3aed;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    box-shadow:
+        0 5px 12px rgba(124, 58, 237, 0.2);
+}
+
+
+/* =========================================
+   TASK INFORMATION
+   ========================================= */
+
+.task-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.task-info h3 {
+    font-size: 15px;
+
+    font-weight: 650;
+
+    color: #1e293b;
+
+    margin-bottom: 8px;
+
+    word-break: break-word;
+}
+
+
+.task-card.completed .task-info h3 {
+    color: #94a3b8;
+
+    text-decoration: line-through;
+}
+
+
+.task-meta {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    font-size: 11px;
+
+    color: #94a3b8;
+}
+
+
+.task-meta span {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 4px;
+}
+
+
+/* =========================================
+   TASK ACTION BUTTONS
+   ========================================= */
+
+.task-actions {
+    display: flex;
+
+    gap: 7px;
+}
+
+
+.action-btn {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #f8fafc;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: all 0.25s ease;
+}
+
+
+.action-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.edit-btn:hover {
+    background: #ede9fe;
+
+    box-shadow:
+        0 5px 12px rgba(124, 58, 237, 0.12);
+}
+
+
+.delete-btn:hover {
+    background: #fee2e2;
+
+    box-shadow:
+        0 5px 12px rgba(239, 68, 68, 0.12);
+}
+
+
+/* =========================================
+   COMPLETED TASK
+   ========================================= */
+
+.task-card.completed {
+    background: #fafafa;
+
+    border-color: #f1f5f9;
+}
+
+
+.task-card.completed:hover {
+    background: white;
+}
+
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+
+.empty-state {
+    text-align: center;
+
+    padding: 55px 20px;
+
+    color: #94a3b8;
+}
+
+
+.empty-icon {
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    color: #6366f1;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ede9fe,
+            #f5f3ff
+        );
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 10px 25px rgba(99, 102, 241, 0.12);
+}
+
+
+.empty-state h3 {
+    color: #334155;
+
+    font-size: 18px;
+
+    margin-bottom: 8px;
+}
+
+
+.empty-state p {
+    font-size: 13px;
+}
+
+
+/* =========================================
+   MODAL
+   ========================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    backdrop-filter: blur(7px);
+
+    z-index: 1000;
+}
+
+
+.modal.show {
+    display: flex;
+
+    animation: fadeIn 0.25s ease;
+}
+
+
+.modal-content {
+    width: 100%;
+
+    max-width: 470px;
+
+    padding: 28px;
+
+    border-radius: 20px;
+
+    background: white;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.25);
+
+    animation: modalUp 0.3s ease;
+}
+
+
+.modal-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+
+.modal-header h2 {
+    font-size: 21px;
+
+    color: #111827;
+}
+
+
+.modal-header button {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #f1f5f9;
+
+    color: #64748b;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.modal-header button:hover {
+    background: #fee2e2;
+
+    color: #ef4444;
+}
+
+
+#editForm {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+
+#editForm input {
+    background: #f8fafc;
+}
+
+
+.modal-buttons {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 8px;
+}
+
+
+.modal-buttons button {
+    padding: 11px 19px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+#cancelEdit {
+    color: #475569;
+
+    background: #f1f5f9;
+}
+
+
+#cancelEdit:hover {
+    background: #e2e8f0;
+}
+
+
+#editForm button[type="submit"] {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 6px 15px rgba(79, 70, 229, 0.2);
+}
+
+
+#editForm button[type="submit"]:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 20px rgba(79, 70, 229, 0.3);
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    text-align: center;
+
+    padding: 28px 10px 10px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes modalUp {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(25px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET
+   ========================================= */
+
+@media (max-width: 800px) {
+
+    .input-group {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .input-box:first-child {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVE - MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 94%;
+
+        padding-top: 18px;
+    }
+
+
+    header {
+        padding: 24px 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .logo {
+        gap: 12px;
+    }
+
+
+    .logo > span {
+        width: 50px;
+        height: 50px;
+
+        border-radius: 14px;
+
+        font-size: 25px;
+    }
+
+
+    .logo h1 {
+        font-size: 24px;
+    }
+
+
+    .logo p {
+        font-size: 11px;
+    }
+
+
+    .task-summary {
+        min-width: 85px;
+
+        padding: 10px;
+    }
+
+
+    .task-summary strong {
+        font-size: 23px;
+    }
+
+
+    .task-summary span {
+        font-size: 10px;
+    }
+
+
+    .add-task-card,
+    .tasks-section {
+        padding: 22px;
+
+        border-radius: 18px;
+    }
+
+
+    .input-group {
+        grid-template-columns: 1fr;
+    }
+
+
+    .input-box:first-child {
+        grid-column: auto;
+    }
+
+
+    .filter-section {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+
+    .filter {
+        flex: 1;
+
+        padding: 9px 8px;
+
+        font-size: 11px;
+    }
+
+
+    .section-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .task-card {
+        padding: 16px;
+
+        align-items: flex-start;
+    }
+
+
+    .task-actions {
+        flex-direction: column;
+    }
+
+
+    .task-info h3 {
+        font-size: 14px;
+    }
+
+
+    .task-meta {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 4px;
+    }
+
+
+    .modal-content {
+        padding: 22px;
+
+        border-radius: 17px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 400px) {
+
+    header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 18px;
+    }
+
+
+    .task-summary {
+        width: 100%;
+
+        text-align: left;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+    }
+
+
+    .task-summary strong {
+        display: inline;
+    }
+
+
+    .task-summary span {
+        font-size: 11px;
+    }
+
+
+    .add-btn {
+        width: 100%;
+    }
+
+}

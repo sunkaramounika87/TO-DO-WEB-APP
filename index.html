@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>To-Do Web App</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <span>✓</span>
+                <div>
+                    <h1>TaskFlow</h1>
+                    <p>Organize your day</p>
+                </div>
+            </div>
+
+            <div class="task-summary">
+                <strong id="totalTasks">0</strong>
+                <span>Total Tasks</span>
+            </div>
+        </header>
+
+
+        <!-- Add Task Section -->
+        <section class="add-task-card">
+
+            <h2>Add New Task</h2>
+
+            <form id="taskForm">
+
+                <div class="input-group">
+
+                    <div class="input-box">
+                        <label for="taskInput">Task</label>
+
+                        <input
+                            type="text"
+                            id="taskInput"
+                            placeholder="What do you need to do?"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="input-box">
+                        <label for="taskDate">Date</label>
+
+                        <input
+                            type="date"
+                            id="taskDate"
+                        >
+                    </div>
+
+
+                    <div class="input-box">
+                        <label for="taskTime">Time</label>
+
+                        <input
+                            type="time"
+                            id="taskTime"
+                        >
+                    </div>
+
+                </div>
+
+                <button type="submit" class="add-btn">
+                    + Add Task
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+
+            <button class="filter active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter" data-filter="pending">
+                Pending
+            </button>
+
+            <button class="filter" data-filter="completed">
+                Completed
+            </button>
+
+        </section>
+
+
+        <!-- Task List -->
+        <section class="tasks-section">
+
+            <div class="section-heading">
+
+                <div>
+                    <h2>My Tasks</h2>
+                    <p>Keep track of your daily activities</p>
+                </div>
+
+                <span id="pendingCount">0 pending</span>
+
+            </div>
+
+
+            <div id="taskList" class="task-list">
+
+                <!-- Tasks will appear here -->
+
+                <div class="empty-state" id="emptyState">
+
+                    <div class="empty-icon">✓</div>
+
+                    <h3>No tasks yet</h3>
+
+                    <p>Add your first task and start being productive!</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer>
+            <p>TaskFlow • Stay organized. Stay productive.</p>
+        </footer>
+
+    </div>
+
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>Edit Task</h2>
+
+                <button id="closeModal">&times;</button>
+
+            </div>
+
+
+            <form id="editForm">
+
+                <input
+                    type="text"
+                    id="editTaskInput"
+                    placeholder="Task name"
+                    required
+                >
+
+                <input
+                    type="date"
+                    id="editTaskDate"
+                >
+
+                <input
+                    type="time"
+                    id="editTaskTime"
+                >
+
+                <div class="modal-buttons">
+
+                    <button type="button" id="cancelEdit">
+                        Cancel
+                    </button>
+
+                    <button type="submit">
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
