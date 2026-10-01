@@ -106,15 +106,7 @@ The application includes:
 
 ---
 
-## 📸 Screenshots
 
-Add screenshots of your project here after uploading them to GitHub.
-
-```text
-![To-Do App Screenshot](screenshot.png)
-```
-
----
 
 ## 📚 Learning Outcomes
 
